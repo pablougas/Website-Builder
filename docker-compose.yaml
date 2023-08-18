@@ -1,0 +1,95 @@
+version: '3.7'
+
+services: 
+  nginx:
+    container_name: church-server
+    image: nginx:latest
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - "81:80"
+      - "82:80"
+      - "83:80"
+      - "84:80"
+      - "85:80"
+      - "86:80"
+    depends_on:
+      - admin_web
+      - church_web
+      - dashboard_web
+      - events_web
+      - groups_web
+      - members_web
+
+  admin_web:
+    container_name: admin_web
+    build:
+      context: ./admin_web/
+      dockerfile: ./docker/Dockerfile
+    volumes:
+      - '.:/admin_web'
+      - '/admin_web/node_modules'
+    ports:
+      - '8081:8080' 
+    restart: always
+
+  church_web:
+    container_name: church_web
+    build:
+      context: ./church_web
+      dockerfile: ./docker/Dockerfile
+    volumes:
+      - '.:/church_web'
+      - '/church_web/node_modules'
+    ports:
+      - '8082:8080' 
+    restart: always
+
+  dashboard_web:
+    container_name: dashboard_web
+    build:
+      context: ./dashboard_web
+      dockerfile: ./docker/Dockerfile
+    volumes:
+      - '.:/dashboard_web'
+      - '/dashboard_web/node_modules'
+    ports:
+      - '8083:8080' 
+    restart: always
+
+  events_web:
+    container_name: events_web
+    build:
+      context: ./events_web
+      dockerfile: ./docker/Dockerfile
+    volumes:
+      - '.:/events_web'
+      - '/events_web/node_modules'
+    ports:
+      - '8084:8080' 
+    restart: always
+
+  groups_web:
+    container_name: groups_web
+    build:
+      context: ./groups_web
+      dockerfile: ./docker/Dockerfile
+    volumes:
+      - '.:/groups_web'
+      - '/groups_web/node_modules'
+    ports:
+      - '8085:8080' 
+    restart: always
+
+  members_web:
+    container_name: members_web
+    build:
+      context: ./members_web
+      dockerfile: ./docker/Dockerfile
+    volumes:
+      - '.:/members_web'
+      - '/members_web/node_modules'
+    ports:
+      - '8086:8080' 
+    restart: always
+  

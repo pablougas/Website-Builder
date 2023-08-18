@@ -1,0 +1,17 @@
+
+# web apps to ignore
+/admin_web
+/church_web
+/dashboard_web
+/events_web
+/groups_web
+/members_web
+
+
+# APIs to ignore
+/admin_api
+/church_api
+/dashboard_api
+/events_api
+/groups_api
+/members_api
