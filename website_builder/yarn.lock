@@ -5816,10 +5816,20 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.6
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.11.tgz#4183e4e8bf08bb6e05bbb2f7d2e0c8f712ca40e3"
   integrity sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==
 
+grapesjs-lory-slider@^0.1.5:
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/grapesjs-lory-slider/-/grapesjs-lory-slider-0.1.5.tgz#9dbd42a0d2b10b8d848b9d74275c74e807853549"
+  integrity sha512-l5GYJtptAJXt5y3hOO9Boj1q+t1hOtSb3ODc0n0v8KycLE54tjh1XFrohmoj44wI36AyjH9W14tKx7iT5L7wDg==
+
 grapesjs-preset-webpage@1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/grapesjs-preset-webpage/-/grapesjs-preset-webpage-1.0.2.tgz#7ef6cb332d553c07c64584d135c435d382d7fca3"
   integrity sha512-5sCBqYZ6zAXdE6Qbn0VxPkEGCrs32pZ7JP+okbxioo+7br1Yp/NMzlBs8+WB13vgVre3CCI+gjzpkJ4xIPcmXg==
+
+grapesjs-style-filter@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/grapesjs-style-filter/-/grapesjs-style-filter-1.0.2.tgz#b3ec2fc8213e543adae4fbabd62f312094eeba1e"
+  integrity sha512-f5ufWeIsnU3hHV3TiQeYVEZis2WlDpllOKst18BEyAUERO1yu1zwIqgIPWH9en2W262+jEvsRjgd06EWgchYgQ==
 
 grapesjs@0.21.2:
   version "0.21.2"

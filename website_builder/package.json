@@ -12,6 +12,8 @@
   "dependencies": {
     "babel-plugin-transform-html-import-to-string": "^2.0.0",
     "core-js": "^3.6.5",
+    "grapesjs-lory-slider": "^0.1.5",
+    "grapesjs-style-filter": "^1.0.2",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
     "vuetify": "^2.6.0",

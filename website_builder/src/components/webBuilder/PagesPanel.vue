@@ -1,6 +1,6 @@
 <template>
   <div class="pages-wrp">
-    <v-btn color="primary" @click="addPage">Add new page</v-btn>
+    <v-btn color="primary" @click="addPage">Add page</v-btn>
     <v-list rounded class="pages" dense color="#333">
       <v-list-item
         v-for="page in pages"
@@ -81,6 +81,7 @@ export default Vue.extend({
 .pages-wrp {
   background: #333;
   padding: 5px;
+  width: 240px;
 }
 .page {
   background-color: #444;

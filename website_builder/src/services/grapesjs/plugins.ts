@@ -1,7 +1,6 @@
 export default [
   "gjs-blocks-basic",
   "grapesjs-navbar",
-  "grapesjs-lory-slider",
   "grapesjs-plugin-forms",
   "grapesjs-component-countdown",
   "grapesjs-plugin-export",
@@ -15,5 +14,8 @@ export default [
   "grapesjs-style-bg",
   "grapesjs-preset-webpage",
   "grapesjs-fonts",
-  "grapesjs-style-bg",
+  "grapesjs-style-filter",
+  "grapesjs-fonts",
+  "grapesjs-symbols",
+  "grapesjs-lory-slider",
 ];
