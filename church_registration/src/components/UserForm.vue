@@ -3,7 +3,7 @@
     dark
     outlined
     rounded="xxl"
-    max-width="65%"
+    :max-width="$vuetify.breakpoint.smAndDown ? '95%' : '65%'"
     class="card px-6 py-5"
     :class="{
       'my-15': $vuetify.breakpoint.smAndDown,
@@ -18,52 +18,54 @@
       <h1 class="title text-center">
         Try it out today. No credit card required.
       </h1>
-      <v-form
-        ref="form"
-        class="mt-10"
-        v-model="valid"
-        lazy-validation
-        v-if="step == 1"
-      >
-        <v-text-field
-          light
-          solo
-          label="Email"
-          v-model="email"
-          :rules="emailRules"
-        />
-        <v-text-field
-          light
-          solo
-          label="Password"
-          v-model="password"
-          :rules="passwordRules"
-          @click:append="show = !show"
-          :type="show ? 'text' : 'password'"
-          :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
-        />
-        <v-text-field
-          light
-          solo
-          :rules="confirmRules"
-          label="Confirm Password"
-          v-model="passwordConfirm"
-          @click:append="show1 = !show1"
-          :type="show1 ? 'text' : 'password'"
-          :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-        />
-        <v-btn
-          rounded
-          block
-          large
-          color="warning"
-          class="elevation-0"
-          @click="handleStep"
+      <v-fade-transition leave-absolute hide-on-leave>
+        <v-form
+          ref="form"
+          class="mt-10"
+          v-model="valid"
+          lazy-validation
+          v-if="step == 1"
         >
-          Continue
-        </v-btn>
-      </v-form>
-      <OrgForm v-model="organization" @onSubmit="submit" v-else />
+          <v-text-field
+            light
+            solo
+            label="Email"
+            v-model="email"
+            :rules="emailRules"
+          />
+          <v-text-field
+            light
+            solo
+            label="Password"
+            v-model="password"
+            :rules="passwordRules"
+            @click:append="show = !show"
+            :type="show ? 'text' : 'password'"
+            :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
+          />
+          <v-text-field
+            light
+            solo
+            :rules="confirmRules"
+            label="Confirm Password"
+            v-model="passwordConfirm"
+            @click:append="show1 = !show1"
+            :type="show1 ? 'text' : 'password'"
+            :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+          />
+          <v-btn
+            rounded
+            block
+            large
+            color="warning"
+            class="elevation-0"
+            @click="handleStep"
+          >
+            Continue
+          </v-btn>
+        </v-form>
+        <OrgForm v-model="organization" @onSubmit="submit" v-else />
+      </v-fade-transition>
     </v-card-text>
     <v-card-actions class="block">
       <p>Already a member? <v-btn text small>Sign in</v-btn></p>

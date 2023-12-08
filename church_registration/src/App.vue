@@ -23,7 +23,8 @@
             </v-row>
             <v-row class="px-15">
               <v-col
-                cols="3"
+                cols="4"
+                sm="3"
                 class="d-flex flex-column mb-10 px-4"
                 v-for="(feature, i) in features"
                 :key="i"

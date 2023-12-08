@@ -8,7 +8,13 @@
         :rules="nameRules"
         v-model="legal_name"
       />
-      <v-text-field light solo label="Main Phone" v-model="phone" />
+      <v-text-field
+        light
+        solo
+        name="phone"
+        label="Main Phone"
+        v-model="phone"
+      />
       <v-text-field
         light
         solo
@@ -19,10 +25,10 @@
       />
       <v-text-field light solo label="Street" v-model="street2" />
       <v-row>
-        <v-col cols="8" class="pb-0">
+        <v-col cols="7" class="pb-0">
           <v-text-field light solo name="city" label="City" v-model="city" />
         </v-col>
-        <v-col cols="4" class="pb-0">
+        <v-col cols="5" class="pb-0">
           <v-select
             light
             solo
