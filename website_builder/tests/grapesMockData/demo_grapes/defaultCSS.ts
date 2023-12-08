@@ -1,4 +1,4 @@
-// exporting this css as a string so I dont have to bother with modules 
+// exporting this css as a string so I dont have to bother with modules
 
 export default `
   * {
@@ -478,4 +478,4 @@ export default `
         display:none;
       }
     }
-    `
+    `;

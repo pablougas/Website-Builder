@@ -5,7 +5,7 @@ const baseUrl = process.env.VUE_APP_BASE_API;
 
 export const setAuthHeader = async (): Promise<void> => {
   try {
-    const token = "12323452345"
+    const token = "12323452345";
     /* eslint-disable @typescript-eslint/no-explicit-any */
     // const authService = getInstance() as Record<string, any>;
     // console.log(await authService.getTokenSilently());

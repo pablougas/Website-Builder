@@ -1,22 +1,25 @@
 <template>
   <div class="pages-wrp">
     <v-btn color="primary" @click="addPage">Add new page</v-btn>
-    <div class="pages">
-      <div
+    <v-list rounded class="pages" dense color="#333">
+      <v-list-item
         v-for="page in pages"
         :key="page.id"
+        class="mt-2"
         :class="{ page: 1, selected: isSelected(page) }"
         @click="selectPage(page.id)"
       >
-        {{ page.get("name") || page.id }}
-        <span
+        <v-list-item-content>
+          {{ page.get("name") || page.id }}
+        </v-list-item-content>
+        <v-list-item-action
           v-if="!isSelected(page)"
           @click="removePage(page.id)"
-          class="page-close"
-          >&Cross;</span
         >
-      </div>
-    </div>
+          <v-icon>mdi-trash-can</v-icon>
+        </v-list-item-action>
+      </v-list-item>
+    </v-list>
   </div>
 </template>
 
@@ -79,40 +82,13 @@ export default Vue.extend({
   background: #333;
   padding: 5px;
 }
-.add-page {
-  background: #444444;
-  color: white;
-  padding: 5px;
-  border-radius: 2px;
-  cursor: pointer;
-  white-space: nowrap;
-  margin-bottom: 10px;
-}
 .page {
   background-color: #444;
   color: white;
-  padding: 5px;
-  margin-bottom: 5px;
-  border-radius: 2px;
   cursor: pointer;
 
   &.selected {
     background-color: #706f6f;
-  }
-}
-
-.page-close {
-  opacity: 0.5;
-  float: right;
-  background-color: #2c2c2c;
-  height: 20px;
-  display: inline-block;
-  width: 17px;
-  text-align: center;
-  border-radius: 3px;
-
-  &:hover {
-    opacity: 1;
   }
 }
 </style>

@@ -5,7 +5,7 @@ declare class GrapesEditor {
   static init(config?: grapesjs.EditorConfig | object): grapesjs.Editor;
 }
 
-declare module grapesjs {
+declare namespace grapesjs {
   interface Editor {
     $: Function;
     editor: object;
@@ -268,7 +268,7 @@ declare module grapesjs {
   interface Modal {
     open(opts?: ModalOptions): Modal;
     close(): Modal;
-    isOpen(): Boolean;
+    isOpen(): boolean;
     setTitle(title: string): Modal;
     getTitle(): string;
     setContent(content: HTMLElement | string): Modal;
@@ -509,4 +509,4 @@ declare module grapesjs {
     ns?: string;
     level?: "debug" | "info" | "warning" | "error";
   }
-} 
+}
