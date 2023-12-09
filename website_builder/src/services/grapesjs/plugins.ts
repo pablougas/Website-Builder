@@ -1,5 +1,6 @@
 export default [
   "gjs-blocks-basic",
+  "gjs-plugin-filestack",
   "grapesjs-navbar",
   "grapesjs-plugin-forms",
   "grapesjs-component-countdown",

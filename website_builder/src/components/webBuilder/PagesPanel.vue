@@ -1,6 +1,6 @@
 <template>
   <div class="pages-wrp">
-    <v-btn color="primary" @click="addPage">Add page</v-btn>
+    <v-btn color="primary" @click="dialog = true">Add page</v-btn>
     <v-list rounded class="pages" dense color="#333">
       <v-list-item
         v-for="page in pages"
@@ -14,12 +14,65 @@
         </v-list-item-content>
         <v-list-item-action
           v-if="!isSelected(page)"
-          @click="removePage(page.id)"
+          @click.stop="deletePage(page)"
         >
           <v-icon>mdi-trash-can</v-icon>
         </v-list-item-action>
       </v-list-item>
     </v-list>
+    <v-dialog v-model="dialog" width="400">
+      <v-card width="400">
+        <v-card-title v-if="remove">
+          Are you sure?
+        </v-card-title>
+        <v-card-title v-else>
+          Add New Page
+          <v-spacer></v-spacer>
+          <v-btn icon color="info" @click="dialog = false">
+            <v-icon>mdi-close</v-icon>
+          </v-btn>
+        </v-card-title>
+        <v-card-text>
+          <v-container>
+            <v-row>
+              <v-col v-if="remove">
+                You will still need to publish these changes for this page to be fully deleted. 
+                Until then, you will still be able to "undo" this action. 
+                <br />
+                <br />Don't forget to remove any links to your removed page.
+              </v-col>
+              <v-col class="d-flex" v-else>
+                <v-text-field
+                  dense
+                  v-model="pageName"
+                  label="Name"
+                  type="text"
+                  outlined
+                >
+                  <template v-slot:append>
+                    <v-icon :color="valid ? 'success' : 'error'">
+                      mdi-check
+                    </v-icon>
+                  </template>
+                </v-text-field>
+                <v-btn
+                  color="success"
+                  class="ml-3"
+                  :disabled="!valid"
+                  @click="addPage"
+                >
+                  Save
+                </v-btn>
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-card-text>
+        <v-card-actions v-if="remove && selectedPage">
+          <v-spacer></v-spacer>
+          <v-btn text class="error" @click="removePage(selectedPage.id)">Delete</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </div>
 </template>
 
@@ -38,6 +91,22 @@ export default Vue.extend({
       required: true,
     },
   },
+  data: () => ({
+    dialog: false,
+    remove: true,
+    pageName: "",
+    selectedPage: null as null | Page,
+  }),
+  computed: {
+    valid(): boolean {
+      const nameExists = this.pages.find(
+        (page: Page) =>
+          page.attributes.name.toLowerCase().trim() ==
+          this.pageName.toLowerCase().trim()
+      );
+      return !nameExists && this.pageName?.length > 3;
+    },
+  },
   methods: {
     isSelected(page: Page) {
       const pm = this.editor?.Pages;
@@ -51,22 +120,35 @@ export default Vue.extend({
         return pm.select(pageId.toString());
       }
     },
+    deletePage(page: Page) {
+      this.remove = true;
+      this.selectedPage = page
+      this.dialog = true;
+    },
     removePage(pageId: string | number) {
+      console.log(pageId)
       const pm = this.editor?.Pages;
       if (pm) {
+        this.closeDialog()
         return pm.remove(pageId.toString());
-      }
+      } 
     },
     addPage() {
       const pm = this.editor?.Pages;
       if (pm) {
-        const len = pm.getAll().length;
         pm.add({
-          name: `New Page ${len + 1}`,
-          component: "<div>New page</div>",
+          name: this.pageName.toLowerCase(),
+          component: `<div>${this.pageName}</div>`,
         });
-      }
+      } 
+      this.closeDialog()
     },
+    closeDialog() {
+      console.log('CLOSING DIALOG!')
+      this.pageName = "";
+      this.selectedPage = null;
+      this.dialog = false;
+    }
   },
 });
 </script>
