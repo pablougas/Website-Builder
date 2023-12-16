@@ -19,6 +19,9 @@
           <v-icon>mdi-trash-can</v-icon>
         </v-list-item-action>
       </v-list-item>
+      <li>
+        Simple Block
+      </li>
     </v-list>
     <v-dialog v-model="dialog" width="400">
       <v-card width="400">
